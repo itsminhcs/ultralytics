@@ -670,7 +670,9 @@ def plot_pr_curve(
     ax.set_ylabel("Precision")
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
+    # ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.15),
+          ncol=2, frameon=False)
     ax.set_title("Precision-Recall Curve")
     fig.savefig(save_dir, dpi=250)
     plt.close(fig)
