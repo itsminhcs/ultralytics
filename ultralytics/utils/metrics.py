@@ -565,7 +565,7 @@ class ConfusionMatrix(DataExportMixin):
         title = "Confusion Matrix" + " Normalized" * normalize
         ax.set_xlabel("True", fontsize=label_fontsize, labelpad=10)
         ax.set_ylabel("Predicted", fontsize=label_fontsize, labelpad=10)
-        ax.set_title(title, fontsize=title_fontsize, pad=20)
+        # ax.set_title(title, fontsize=title_fontsize, pad=20)
         ax.set_xticks(xy_ticks)
         ax.set_yticks(xy_ticks)
         ax.tick_params(axis="x", bottom=True, top=False, labelbottom=True, labeltop=False)
@@ -579,7 +579,7 @@ class ConfusionMatrix(DataExportMixin):
             cbar.ax.spines[s].set_visible(False)
         fig.subplots_adjust(left=0, right=0.84, top=0.94, bottom=btm)  # Adjust layout to ensure equal margins
         plot_fname = Path(save_dir) / f"{title.lower().replace(' ', '_')}.png"
-        fig.savefig(plot_fname, dpi=250)
+        fig.savefig(plot_fname, dpi=300,bbox_inches="tight")
         plt.close(fig)
         if on_plot:
             on_plot(plot_fname)
@@ -671,10 +671,10 @@ def plot_pr_curve(
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     # ax.legend(bbox_to_anchor=(1.04, 1), loc="upper left")
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.15),
-          ncol=2, frameon=False)
-    ax.set_title("Precision-Recall Curve")
-    fig.savefig(save_dir, dpi=250)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.5),
+          ncol=11)
+    # ax.set_title("Precision-Recall Curve")
+    fig.savefig(save_dir, dpi=300,bbox_inches="tight")
     plt.close(fig)
     if on_plot:
         on_plot(save_dir)
